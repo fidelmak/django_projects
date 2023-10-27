@@ -15,17 +15,21 @@ monthly_challenges = {
     "june": "Start reading a book",
     "july": "Start reading a book",
     "august": "Start reading a book",
+    "september": "play music ",
+    "december" : None
 }
 def index(request):
-    list_item = ""
     months = list(monthly_challenges.keys())
-    for month in months:
-        capitalize_month = month.capitalize()
-        month_path = reverse("month_challenge", args=[month] )
+    # for month in months:
+    #     capitalize_month = month.capitalize()
+    #     month_path = reverse("month_challenge", args=[month] )
 
-        list_item += f'<li><a href="{month_path}"> {capitalize_month} </a></li>'
-    response_data = f'<ul><h1>{list_item}</h1></ul>'
-    return HttpResponse(response_data)
+    #     list_item += f'<li><a href="{month_path}"> {capitalize_month} </a></li>'
+    # response_data = f'<ul><h1>{list_item}</h1></ul>'
+    # return HttpResponse(response_data)
+    return render(request, "challenges/index.html", {
+        "months": months
+    })
 
 def monthly_challenge_by_number(request, month):
     months = list(monthly_challenges.keys())
@@ -36,7 +40,7 @@ def monthly_challenge_by_number(request, month):
     forward_month = months[month - 1]
     redirect_path = reverse("month_challenge", args=[forward_month])
     
-    return HttpResponseRedirect(redirect_path)
+    return HttpResponseRedirect(redirect_path)  
 
 def monthly_challenge(request, month):
     try:
