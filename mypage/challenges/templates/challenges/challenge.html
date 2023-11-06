@@ -1,16 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>{{head | title}} Challenges</title>
-  </head>
-  <body>
-    <h1>{{head | title}} Challenge</h1>
-    {% if text is not None %}
-    <h2>{{text}}</h2>
-    {% else %}
-    <p>There is no Challenge yet!</p>
-    {% endif %}
-  </body>
-</html>
+{% extends "base.html" %} {% block page_title %} {{head | title}} Challenges
+{%endblock %} {%block content %} {% include "challenges/includes/header.html" %}
+<h1>{{head | title}} Challenge</h1>
+{% if text is not None %}
+<h2>{{text}}</h2>
+{% else %}
+<p>There is no Challenge yet!</p>
+{% endif %} {%endblock%} <
